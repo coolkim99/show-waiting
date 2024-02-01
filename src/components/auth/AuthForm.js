@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import Button from '../common/Button';
+import { useState } from 'react';
 
 /**
  * 회원가입 또는 로그인 폼을 보여줍니다.
@@ -34,6 +35,22 @@ const StyledInput = styled.input`
   & + & {
     margin-top: 1rem;
   }
+`;
+
+export const Select = styled.select`
+margin-top: 1rem;
+	display: block;
+	width: 100%;
+	padding: 8px 8px;
+	font-size: inherit;
+	line-height: inherit;
+	border: 1px solid;
+	border-radius: 5px;
+	color: white;
+	background-color: transparent;
+	&:focus {
+		border-color: red;
+	}
 `;
 
 /**
@@ -73,6 +90,13 @@ const ErrorMessage = styled.div`
 
 const AuthForm = ({type, form, onChange, onSubmit, error}) => {
     const text = textMap[type];
+
+    const selectList = ["CONSUMER", "STORE"];
+    const [Selected, setSelected] = useState("");
+    const handleSelect = (e) => {
+        setSelected(e.target.value);
+      };
+
   return (
     <AuthFormBlock>
       <h3>{text}</h3>
@@ -110,6 +134,21 @@ const AuthForm = ({type, form, onChange, onSubmit, error}) => {
           onChange={onChange}
           value={form.name}
         />
+        )}
+        {type === 'register' && (
+          <Select
+          autoComplete="type"
+          name="type"
+          placeholder="회원 종류"
+          onChange={onChange}
+          value={form.type}
+        >
+			{selectList.map((item) => (
+            <option value={item} key={item}>
+              {item}
+            </option>
+          ))}
+            </Select>
         )}
         {error && <ErrorMessage>{error}</ErrorMessage>}
         <ButtonWithMarginTop>

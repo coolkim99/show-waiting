@@ -1,9 +1,13 @@
 import React from "react";
+import AuthTemplate from "../components/auth/AuthTemplate";
+import JoinForm from "../containers/auth/JoinForm";
 
 const JoinPage = () => {
     return (
         <>
-        <div>join</div>
+        <AuthTemplate>
+            <JoinForm/>
+        </AuthTemplate>
         </>
     );
 }

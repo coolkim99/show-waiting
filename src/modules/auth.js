@@ -52,7 +52,7 @@ export const changeField = createAction(
       password: '',
       passwordConfirm: '',
       name: '',
-      type: '',
+      type: "CONSUMER",
     },
     login: {
       email: '',

@@ -4,12 +4,9 @@ import AuthTemplate from "../components/auth/AuthTemplate";
 
 const LoginPage = () => {
     return (
-        // <AuthTemplate>
-        //     <LoginForm/>
-        // </AuthTemplate>
-        <div>
-            Login
-        </div>
+        <AuthTemplate>
+            <LoginForm/>
+        </AuthTemplate>
     );
 }
 

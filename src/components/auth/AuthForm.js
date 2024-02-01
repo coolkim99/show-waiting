@@ -10,7 +10,7 @@ import Button from '../common/Button';
 const AuthFormBlock = styled.div`
   h3 {
     margin: 0;
-    color: cyan;
+    color: white;
     margin-bottom: 1rem;
     text-align : center;
   }
@@ -22,13 +22,14 @@ const AuthFormBlock = styled.div`
 const StyledInput = styled.input`
   font-size: 1rem;
   border: none;
+  border-radius : 5px;
   border-bottom: 1px solid gray;
   padding-bottom: 0.5rem;
   outline: none;
   width: 100%;
   &:focus {
     color: $oc-teal-7;
-    border-bottom: 1px solid gray;
+    border-bottom: 1px solid black;
   }
   & + & {
     margin-top: 1rem;
@@ -101,21 +102,23 @@ const AuthForm = ({type, form, onChange, onSubmit, error}) => {
             value={form.passwordConfirm}
           />
         )}
-        {error && <ErrorMessage>{error}</ErrorMessage>}
-        <StyledInput
+        {type === 'register' && (
+          <StyledInput
           autoComplete="name"
           name="name"
           placeholder="이름"
           onChange={onChange}
           value={form.name}
         />
-        <ButtonWithMarginTop fullWidth>
+        )}
+        {error && <ErrorMessage>{error}</ErrorMessage>}
+        <ButtonWithMarginTop>
             {text}
         </ButtonWithMarginTop>
       </form>
       <Footer>
       {type === 'login' ? (
-          <Link to="/register">회원가입</Link>
+          <Link to="/join">회원가입</Link>
         ) : (
           <Link to="/login">로그인</Link>
         )}

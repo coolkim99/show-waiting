@@ -2,26 +2,21 @@ import React from 'react';
 import styled from 'styled-components';
 import palette from '../../lib/style/palette';
 import { Link } from 'react-router-dom';
+import Responsive from '../common/Responsive';
 
 /**
  * 회원가입 / 로그인 페이지의 레이아웃을 담당하는 컴포넌트입니다.
  */
 
 const AuthTemplateBlock = styled.div`
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  background: ${palette.gray[2]};
-  /* flex로 내부 내용 중앙 정렬 */
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+    width : 100%;
+    height : 100%;
+    background : #d63f2b;
+    min-height : 100vh;
+
 `;
 /* 흰색 박스 */
-const WhiteBox = styled.div`
+const WhiteBox = styled(Responsive)`
   .logo-area {
     display: block;
     padding-bottom: 2rem;
@@ -31,9 +26,11 @@ const WhiteBox = styled.div`
   }
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.025);
   padding: 2rem;
-  width: 360px;
-  background: white;
-  border-radius: 2px;
+  position: absolute;
+  left: 50%;
+  top: 30%;
+  transform: translateX(-50%);
+
 `;
 const LinkTo = styled(Link)`
   color: black;
@@ -47,7 +44,7 @@ const AuthTemplate = ({ children }) => {
       <AuthTemplateBlock>
         <WhiteBox>
           <div className="logo-area">
-            <LinkTo to="/" style={{textDecoration:'none', fontSize : '1.4rem'}} >Show Waiting</LinkTo>
+            <LinkTo to="/" style={{textDecoration:'none', fontSize : '1.4rem', color : 'white'}} >Show Waiting</LinkTo>
           </div>
           {children}
         </WhiteBox>

@@ -1,15 +1,22 @@
 import React from "react";
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import Responsive from "./Responsive";
 
+const WholeBlock = styled.div`
+    background : #f53920;
+    width : 100%;
+    height : 100%;
+    align-items : center;
+`
 
-const HeaderBlock = styled.div`
+const HeaderBlock = styled(Responsive)`
   height : 5rem;
   display: fixed;
   width : 100%;
   z-index : 1000;
   align-items : center;
-  background : #081A51;
+  background : #f53920;
   .logo {
     font-size: 1.5rem;
     font-weight: 800;
@@ -35,7 +42,9 @@ const Header = () => {
     return(
         <>
         <HeaderBlock>
-            <span className="logo"><LinkTo to="/category">Modit Admin</LinkTo></span>
+            <span className="logo">
+                
+            </span>
         </HeaderBlock>
         </>
     );

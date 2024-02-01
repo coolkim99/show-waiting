@@ -1,4 +1,4 @@
-import { Route, Navigate } from 'react-router-dom';
+import { Route, Redirect } from 'react-router-dom';
 import isLogin from "./isLogin";
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
@@ -7,7 +7,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
       // Otherwise, redirect the user to /login page
       <Route
         {...rest}
-        render={(props) => (isLogin() ? <Component {...props} /> : <Navigate to="/" />)}
+        render={(props) => (isLogin() ? <Component {...props} /> : <Redirect to="/" />)}
       />
     );
   };

@@ -14,6 +14,7 @@ const AuthFormBlock = styled.div`
     color: white;
     margin-bottom: 1rem;
     text-align : center;
+    item-align : center;
   }
 `;
 
@@ -24,8 +25,7 @@ const StyledInput = styled.input`
   font-size: 1rem;
   border: none;
   border-radius : 5px;
-  border-bottom: 1px solid gray;
-  padding-bottom: 0.5rem;
+  padding: 8px 8px;
   outline: none;
   width: 100%;
   &:focus {
@@ -38,9 +38,8 @@ const StyledInput = styled.input`
 `;
 
 export const Select = styled.select`
-margin-top: 1rem;
-	display: block;
-	width: 100%;
+    margin-top: 1rem;
+	width: 107%;
 	padding: 8px 8px;
 	font-size: inherit;
 	line-height: inherit;

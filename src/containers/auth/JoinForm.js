@@ -3,14 +3,17 @@ import { useDispatch, useSelector } from 'react-redux';
 import { changeField, initializeForm, register } from '../../modules/auth';
 import AuthForm from '../../components/auth/AuthForm';
 import {withRouter} from 'react-router-dom';
+import { check } from '../../modules/user';
+import { findStores } from '../../modules/stores';
 
 const RegisterForm = ({ history }) => {
     const [error, setError] = useState(null);
     const dispatch = useDispatch();
-    const { form, auth, authError } = useSelector(({ auth }) => ({
+    const { form, auth, authError, user } = useSelector(({ auth, user }) => ({
       form: auth.register,
       auth: auth.auth,
-      authError: auth.authError
+      authError: auth.authError,
+      user: user.user
     }));
     // 인풋 변경 이벤트 핸들러
     const onChange = e => {
@@ -50,36 +53,61 @@ const RegisterForm = ({ history }) => {
       dispatch(initializeForm('register'));
     }, [dispatch]);
   
+    // useEffect(() => {
+    //     if (authError) {
+    //         // 계정명이 이미 존재할 때
+    //         if (authError.response.status === 409) {
+    //           setError('이미 존재하는 계정명입니다.');
+    //           return;
+    //         }
+    //         // 기타 이유
+    //         setError('회원가입 실패');
+    //         return;
+    //       }
+    //     if (auth) {
+    //         console.log("회원가입 성공");
+    //         dispatch(check(auth.result.id));
+    //     }
+    // }, [auth, authError, dispatch]
+    // );
+
     useEffect(() => {
-        if (authError) {
-            // 계정명이 이미 존재할 때
-            if (authError.response.status === 409) {
-              setError('이미 존재하는 계정명입니다.');
-              return;
-            }
-            // 기타 이유
-            setError('회원가입 실패');
-            return;
-          }
-        if (auth) {
-            console.log("회원가입 성공");
-            console.log(auth);
-            //dispatch(check());
+    if (authError) {
+        // 계정명이 이미 존재할 때
+        if (authError.response.status === 409) {
+          setError('이미 존재하는 계정명입니다.');
+          return;
         }
-    }, [auth, authError, dispatch]
-    );
+        // 기타 이유
+        setError('회원가입 실패');
+        return;
+      }
+    }, [authError]);
+    
+    useEffect(() => {
+      if (auth) {
+        console.log("회원가입 성공");
+        dispatch(check(auth.result.id));
+      }
+    }, [auth, dispatch]);
+
+    useEffect(() => {
+        if (auth && auth.result) {
+          console.log("회원가입 성공");
+        //   dispatch(check(auth.result.id));
+        }
+      }, [auth, dispatch]);
 
 //     // user 값이 잘 설정되었는지 확인
-//   useEffect(() => {
-//     if (user) {
-//       history.push('/main');
-//       try {
-//         localStorage.setItem('user', JSON.stringify(user));
-//       } catch (e) {
-//         console.log('localStorage is not working');
-//       }
-//     }
-//   }, [history, user]);
+  useEffect(() => {
+    if (auth) {
+        if(auth.result.type == "CONSUMER") {
+            dispatch(findStores());
+            history.push('/main');
+        }
+      
+    }
+  }, [history, auth]);
    
     return (
       <AuthForm

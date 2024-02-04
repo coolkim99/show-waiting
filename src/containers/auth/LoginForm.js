@@ -3,14 +3,17 @@ import { useSelector, useDispatch } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import AuthForm from '../../components/auth/AuthForm';
 import { changeField, initializeForm, login } from '../../modules/auth';
+import { check } from '../../modules/user';
+import { findStores } from '../../modules/stores';
 
 const LoginForm = ({ history }) => {
     const [error, setError] = useState(null);
     const dispatch = useDispatch();
-    const { form, auth, authError } = useSelector(({ auth }) => ({
+    const { form, auth, authError, user } = useSelector(({ auth, user }) => ({
       form: auth.login,
       auth: auth.auth,
-      authError: auth.authError
+      authError: auth.authError,
+      user: user.user
     }));
 
     // 인풋 변경 이벤트 핸들러
@@ -46,21 +49,19 @@ const LoginForm = ({ history }) => {
         }
         if (auth) {
           console.log('로그인 성공');
+          console.log(auth.result.id);
+        //   dispatch(check(auth.id));
         }
-      }, [auth, authError]);
-    
-    //   useEffect(() => {
-    //     if (user) {
-    //       history.push('/main');
-    //       try {
-    //         localStorage.setItem('user', JSON.stringify(user));
-    //       } catch (e) {
-    //         console.log('localStorage is not working');
-    //       }
-    //     }
-    //   }, [history, user]);
+      }, [auth, authError, dispatch, user]);
 
-
+      useEffect(() => {        
+        if (auth) {
+            if(auth.result.type == "CONSUMER") {
+                dispatch(findStores());
+                history.push('/main');
+            }
+        }
+      }, [history, auth, dispatch]);
 
 
     return (

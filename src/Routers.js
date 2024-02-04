@@ -6,6 +6,8 @@ import PrivateRoute from "./lib/router/PrivateRoute";
 import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
 import JoinPage from "./pages/JoinPage";
+import MainPage from "./pages/MainPage";
+import MenuPage from "./pages/MenuPage";
 
 const Routers = () => {
     return (
@@ -13,6 +15,8 @@ const Routers = () => {
             <Route path="/" exact={true} component={HomePage}/>
             <Route path="/login" component={LoginPage}/>
             <Route path="/join" component={JoinPage}/>
+            <Route path="/main" component={MainPage}/>
+            <Route path="/@storeId" component={MenuPage}/>
         </BrowserRouter>
     )
 }

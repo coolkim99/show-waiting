@@ -14,12 +14,18 @@ export default function createRequestSaga(type, request) {
   return function*(action) {
     yield put(startLoading(type)); // 로딩 시작
     try {
-      const response = yield call(request, action.payload);
-      yield put({
-        type: SUCCESS,
-        payload: response.data,
-        meta : response
-      });
+      const response = yield call(request, action.payload || {});
+      if (response.data) {
+        yield put({
+          type: SUCCESS,
+          payload: response.data,
+          meta: response
+        });
+        console.log(response.data, "success 받은 리스폰스");
+      } else {
+        // response.data가 없는 경우에 대한 처리
+        console.log('response.data가 없습니다.');
+      }
     } catch (e) {
       yield put({
         type: FAILURE,

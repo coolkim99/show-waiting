@@ -2,32 +2,23 @@ import React from "react";
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import Responsive from "./Responsive";
+import { useSelector } from "react-redux";
 
-const WholeBlock = styled.div`
-    background : #f53920;
-    width : 100%;
-    height : 100%;
-    align-items : center;
-`
 
 const HeaderBlock = styled(Responsive)`
   height : 5rem;
-  display: fixed;
-  width : 100%;
   z-index : 1000;
   align-items : center;
-  background : #f53920;
-  .logo {
-    font-size: 1.5rem;
-    font-weight: 800;
-    letter-spacing: 2px;
-    margin-left : 15px;
-  }
+  border-bottom: 1px solid lightgray;
+  display: flex;
+  align-items: center; /* 세로 중앙 정렬 */
 `
 
-const RightWrapper = styled.div`
-  margin-left: auto;
-`
+const Message = styled.div`
+  font-size : 1.3rem;
+  color : #f53920;
+  position: absolute;
+`;
 
 const LinkTo = styled(Link)`
   text-decoration: none;
@@ -39,12 +30,15 @@ const LinkTo = styled(Link)`
 `
 
 const Header = () => {
+  const { auth} = useSelector(({ auth }) => ({
+    auth: auth.auth.result,
+  }));
     return(
         <>
         <HeaderBlock>
-            <span className="logo">
-                
-            </span>
+            <Message>
+                환영합니다 {auth.name} 님!
+            </Message>
         </HeaderBlock>
         </>
     );

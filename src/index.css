@@ -9,3 +9,7 @@ html, body {
   left:0px;
   position:relative;
 }
+
+span {
+  color: gray;
+}

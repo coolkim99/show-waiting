@@ -10,7 +10,24 @@ const StoreListBlock = styled(Responsive)`
 `;
 
 const StoreItemBlock = styled.div`
+  border: 0.8px solid #d63f2b;
+  border-radius : 5px;
+
+  & + & {
+    margin-top: 1rem;
+  }
+
 `;
+
+const StoreLink = styled(Link)`
+  color : black;
+  text-decoration : none;
+  padding : 10px;
+  .orderarrow {
+    font-weight : normal;
+    color : gray;
+  }
+`
 
 
 const StoreItem = ({ store }) => {
@@ -20,7 +37,8 @@ const StoreItem = ({ store }) => {
   return (
     <StoreItemBlock>
       <h2>
-        <Link to={`/@${storeId}`} style={{color: 'black', textDecoration: 'none'}}>{name}</Link>
+        <StoreLink to={`/@${storeId}`}>{name}
+        </StoreLink>
       </h2>
     </StoreItemBlock>
   );

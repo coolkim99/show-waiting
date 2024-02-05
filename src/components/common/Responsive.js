@@ -7,10 +7,10 @@ const ResponsiveBlock = styled.div`
   margin: 0 auto; /* 중앙 정렬 */
   /* 브라우저 크기에 따라 가로 사이즈 변경 */
   @media (max-width: 1024px) {
-    width: 230px;
+    width: 300px;
   }
   @media (min-width: 768px) {
-    width: 80%;
+    width: 95%;
   }
 `;
 

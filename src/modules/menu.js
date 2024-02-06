@@ -5,20 +5,18 @@ import createRequestSaga, {
   createRequestActionTypes,
 } from '../lib/createRequestSaga';
 
-const INITIALIZE = 'store/INITIALIZE'; // 모든 내용 초기화
-const UNLOAD_MENU = 'store/UNLOAD_MENU'; //store 비우기
+const INITIALIZE = 'menu/INITIALIZE'; // 모든 내용 초기화
 const [
     FIND_MENU,
     FIND_MENU_SUCCESS,
-    FIND_MENU_FAILIRE,
-] = createRequestActionTypes('store/FIND_MENU'); //store 찾기
+    FIND_MENU_FAILURE,
+] = createRequestActionTypes('menu/FIND_MENU'); //store 찾기
 
-export const findMenu = createAction(FIND_MENU, ( id ) => ({
-    id,
+export const findMenu = createAction('menu/FIND_MENU', (storeId) => ({
+    storeId
 }));
-export const unloadMenu = createAction(UNLOAD_MENU);
 
-const findMenuSaga = createRequestSaga(FIND_MENU, storeAPI.storeMenu);
+const findMenuSaga = createRequestSaga(FIND_MENU, storeAPI.menuList);
 
 export function* menuSaga(){
     yield takeLatest(FIND_MENU, findMenuSaga);
@@ -29,9 +27,8 @@ const initialState = {
     error: null,
 };
 
-const store = handleActions(
+const menu = handleActions(
     {
-        [INITIALIZE]: state => initialState,
         [FIND_MENU]: state=>({
             ...state,
             menuInfo: null,
@@ -41,13 +38,12 @@ const store = handleActions(
             ...state,
             menuInfo,
         }),
-        [FIND_MENU_FAILIRE]: (state, { payload: error}) => ({
+        [FIND_MENU_FAILURE]: (state, { payload: error}) => ({
             ...state,
             error,
-        }),
-        [UNLOAD_STORE]: () => initialState,
+        })
     },
     initialState,
 );
 
-export default store;
+export default menu;

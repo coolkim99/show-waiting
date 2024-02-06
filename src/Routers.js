@@ -16,7 +16,7 @@ const Routers = () => {
             <Route path="/login" component={LoginPage}/>
             <Route path="/join" component={JoinPage}/>
             <Route path="/main" component={MainPage}/>
-            <Route path="/@storeId" component={MenuPage}/>
+            <Route path="/menuList/:storeId/:name" component={MenuPage}/>
         </BrowserRouter>
     )
 }

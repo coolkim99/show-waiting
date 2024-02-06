@@ -13,8 +13,10 @@ export default function createRequestSaga(type, request) {
 
   return function*(action) {
     yield put(startLoading(type)); // 로딩 시작
+    console.log(action.payload);
     try {
-      const response = yield call(request, action.payload || {});
+      const response = yield call(request, action.payload);
+      console.log(response.data, action.payload);
       if (response.data) {
         yield put({
           type: SUCCESS,

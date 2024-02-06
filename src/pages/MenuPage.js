@@ -1,9 +1,11 @@
 import React from 'react';
+import MenuListContainer from '../containers/store/MenuListContainer';
 
 const MenuPage = () => {
     return(
         <>
-        <div>포스트 페이지</div>
+        {/* <MenuHeaderContainer/> */}
+        <MenuListContainer/>
         </>    
     );
 };

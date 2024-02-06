@@ -1,6 +1,6 @@
 import React from "react";
 import StoreListContainer from "../containers/store/StoreListContainer";
-import Header from "../components/common/Header";
+import Header from "../components/common/MainHeader";
 import styled from "styled-components";
 import Responsive from "../components/common/Responsive";
 

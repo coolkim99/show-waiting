@@ -31,13 +31,13 @@ const StoreLink = styled(Link)`
 
 
 const StoreItem = ({ store }) => {
-  const { storeId, name } = store;
-  console.log(store);
+  const { storeId, name} = store;
+  console.log(store, name);
 
   return (
     <StoreItemBlock>
       <h2>
-        <StoreLink to={`/@${storeId}`}>{name}
+        <StoreLink to={`/menuList/${storeId}/${name}`}>{name}
         </StoreLink>
       </h2>
     </StoreItemBlock>

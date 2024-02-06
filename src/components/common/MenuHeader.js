@@ -1,8 +1,9 @@
-import React from "react";
+import React, {useEffect} from "react";
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import Responsive from "./Responsive";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { findStore } from "../../modules/store";
 
 
 const HeaderBlock = styled(Responsive)`
@@ -29,19 +30,16 @@ const LinkTo = styled(Link)`
   }
 `
 
-const Header = () => {
-  const { auth} = useSelector(({ auth }) => ({
-    auth: auth.auth.result,
-  }));
+const MenuHeader = ({ name }) => {
     return(
         <>
         <HeaderBlock>
             <Message>
-                환영합니다 {auth.name} 님!
+                {name}
             </Message>
         </HeaderBlock>
         </>
     );
 };
 
-export default Header;
+export default MenuHeader;

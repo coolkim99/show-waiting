@@ -12,7 +12,12 @@ const StoreListBlock = styled(Responsive)`
 const StoreItemBlock = styled.div`
   border: 0.8px solid #d63f2b;
   border-radius : 5px;
-
+  &:hover {
+    background: lightgray;
+    color: white;
+    text-decoration: none;
+    border: 0.8px solid white;
+  }
   & + & {
     margin-top: 1rem;
   }
@@ -34,10 +39,12 @@ const StoreItem = ({ store }) => {
   const { storeId, name} = store;
   console.log(store, name);
 
+  const str = name.toUpperCase();
+
   return (
     <StoreItemBlock>
       <h2>
-        <StoreLink to={`/menuList/${storeId}/${name}`}>{name}
+        <StoreLink to={`/menuList/${storeId}/${name}`}>{str}
         </StoreLink>
       </h2>
     </StoreItemBlock>
@@ -65,7 +72,7 @@ const StoreList = ({ stores, loading, error }) => {
         <div style={{fontSize: '1.5rem', fontWeight: 'bold', padding:'4% 0'}}>
           등록된 매장이 없습니다.</div>}
 
-      {stores && (
+      {!loading && stores && (
         <div>
          {stores.map(store => (
           <StoreItem store={store} key={store.id} />

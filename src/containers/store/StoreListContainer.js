@@ -10,6 +10,7 @@ const StoreListContainer = () => {
       ({ stores, loading}) => ({
         stores: stores.stores,
         error: stores.error,
+        loading: loading['stores/FIND_STORES']
       }),
     );
     useEffect(() => {
@@ -21,6 +22,7 @@ const StoreListContainer = () => {
       <StoreList
         error={error}
         stores={stores}
+        loading={loading}
       />
       </>
     );

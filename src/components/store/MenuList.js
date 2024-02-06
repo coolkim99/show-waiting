@@ -3,12 +3,27 @@ import styled from "styled-components";
 import Responsive from "../common/Responsive";
 
 
-const MenuItemBlock = styled(Responsive)`
-    margin-top : 2rem;
+const MenuItemBlock = styled.div`
+//     border: 0.8px solid #d63f2b;
+//   border-radius : 5px;
+  background-color: rgba(255, 157, 71, 0.2);
+  padding : 10px;
+  &:hover {
+    background: lightgray;
+    color: white;
+    text-decoration: none;
+  }
+  & + & {
+    margin-top: 0.5rem;
+  }
+`;
+
+const Text = styled.div`
+
 `;
 
 const MenuListBlock = styled(Responsive)`
-  margin-top: 4rem;
+  margin-top: 1rem;
 `;
 
 const MenuItem = ({ menu }) => {
@@ -16,13 +31,13 @@ const MenuItem = ({ menu }) => {
 
     return (
         <MenuItemBlock>
-            <div>상품 명 : {name}</div>
-            <div>가격 : {price}</div>
+            <Text>{name}</Text>
+            <Text>{price} ₩</Text>
         </MenuItemBlock>
     )
 }
 
-const MenuList = ({menus, error}) => {
+const MenuList = ({menus, error, loading}) => {
     const [check, setCheck] = useState(false);
   useEffect(() => {
     if(menus && menus.length == 0){
@@ -35,9 +50,9 @@ const MenuList = ({menus, error}) => {
         <MenuListBlock>
         {check && 
             <div style={{fontSize: '1.5rem', fontWeight: 'bold', padding:'4% 0'}}>
-                게시글이 없습니다.</div>}
+                준비된 메뉴가 없습니다.</div>}
 
-        { menus && (
+        {!loading && menus && (
             <div>
             {menus.map(menu => (
                 <MenuItem menu={menu} key={menu.id} />

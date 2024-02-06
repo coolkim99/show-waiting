@@ -18,6 +18,10 @@ const Message = styled.div`
   font-size : 1.3rem;
   color : #f53920;
   position: absolute;
+  span{
+    color : gray;
+    font-weight : bold;
+  }
 `;
 
 const LinkTo = styled(Link)`
@@ -30,7 +34,7 @@ const LinkTo = styled(Link)`
 `
 
 const Header = () => {
-  
+
   const { auth} = useSelector(({ auth }) => ({
     auth: auth.auth.result,
   }));
@@ -38,7 +42,7 @@ const Header = () => {
         <>
         <HeaderBlock>
             <Message>
-                환영합니다 {auth.name} 님!
+                환영합니다 <span>{auth.name}</span> 님!
             </Message>
         </HeaderBlock>
         </>

@@ -20,15 +20,39 @@ const OrdersContainer = () => {
         }),
       );
 
-      useEffect(() => {
-        dispatch(findDone(authId));
-        dispatch(findOrdering(authId));
-      }, [dispatch, authId]);
+
+      const handleOrders = async (dispatch, authId) => {
+        try {
+          await dispatch(findOrdering(authId));
+          await dispatch(findDone(authId));
+        } catch (error) {
+          console.error(error);
+        }
+      };
+
+      const fetchData = async () => {
+        try {
+              await handleOrders(dispatch, authId);
+        } catch (error) {
+          console.error(error);
+        }
+      };
+
+      useEffect(() => { 
+        console.log("orderContainer")       
+        fetchData();
+      }, [process, authId, dispatch]);
+
+      // useEffect(() => {
+      //   console.log("orderContainer")
+      //   dispatch(findDone(authId));
+      //   dispatch(findOrdering(authId));
+      // }, [dispatch, authId, process]);
     
 
     return (
         <>
-        {!orderloading && !doneloading &&
+        {!orderloading && !doneloading && ordering != null && done != null &&
         <>
         <NewOrders orderings={ordering} loading={orderloading}/>
         <DoneOrders dones={done} loading={doneloading}/>

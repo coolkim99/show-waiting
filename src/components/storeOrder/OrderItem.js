@@ -2,8 +2,9 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import Responsive from "../common/Responsive";
 import Button from "../common/Button";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { orderDone, notDone } from "../../modules/process";
+import { findOrdering, findDone } from "../../modules/orders";
 
 const OrderItemBlock = styled.div`
   background-color: rgba(255, 157, 71, 0.2);
@@ -30,15 +31,24 @@ const TextBlock = styled.div`
 const OrderItem = ({ orderItem }) => {
     const dispatch = useDispatch();
 
+    const { authId } = useSelector(({ auth }) => ({
+        authId: auth.auth.result.id
+      }));
+
     const { id, userName, itemName, count, orderDate, status } = orderItem;
 
-    const onDone = () => {
-        dispatch(orderDone(id));
+    const onDone = async () => {
+        await dispatch(orderDone(id));
+        console.log("onDone")
+        // await dispatch(findDone(authId));
+        // await dispatch(findOrdering(authId));
     };
 
-    const onRedo = () => {
-        console.log(id, typeof(id));
-        dispatch(notDone(id));
+    const onRedo = async () => {
+        await dispatch(notDone(id));
+        console.log("onRedo")
+        // await dispatch(findDone(authId));
+        // await dispatch(findOrdering(authId));
     };
 
     return (

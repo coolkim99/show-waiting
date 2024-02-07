@@ -5,6 +5,7 @@ import AuthForm from '../../components/auth/AuthForm';
 import { changeField, initializeForm, login } from '../../modules/auth';
 import { check } from '../../modules/user';
 import { findStores } from '../../modules/stores';
+import { findDone, findOrdering } from '../../modules/orders';
 
 const LoginForm = ({ history }) => {
     const [error, setError] = useState(null);
@@ -50,17 +51,36 @@ const LoginForm = ({ history }) => {
         if (auth) {
           console.log('로그인 성공');
           console.log(auth.result.id);
-        //   dispatch(check(auth.id));
         }
       }, [auth, authError, dispatch, user]);
 
-      useEffect(() => {        
-        if (auth) {
-            if(auth.result.type == "CONSUMER") {
-                dispatch(findStores());
-                history.push('/main');
-            }
+      const handleOrders = async (dispatch, userId, history) => {
+        try {
+          await dispatch(findOrdering(userId));
+          await dispatch(findDone(userId));
+          history.push('/orders');
+        } catch (error) {
+          console.error(error);
         }
+      };
+
+      const fetchData = async () => {
+        try {
+          if (auth) {
+            if (auth.result.type === "CONSUMER") {
+              dispatch(findStores());
+              history.push('/main');
+            } else if (auth.result.type === "STORE") {
+              await handleOrders(dispatch, auth.result.id, history);
+            }
+          }
+        } catch (error) {
+          console.error(error);
+        }
+      };
+
+      useEffect(() => {        
+        fetchData();
       }, [history, auth, dispatch]);
 
 

@@ -4,10 +4,9 @@ import Responsive from "../common/Responsive";
 
 
 const MenuItemBlock = styled.div`
-//     border: 0.8px solid #d63f2b;
-//   border-radius : 5px;
   background-color: rgba(255, 157, 71, 0.2);
   padding : 10px;
+  font-size : 0.8rem;
   &:hover {
     background: lightgray;
     color: white;

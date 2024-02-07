@@ -5,7 +5,6 @@ import StoreList from "../../components/store/StoreList";
 import { findStores } from "../../modules/stores";
 
 const StoreListContainer = () => {
-    const dispatch = useDispatch();
     const { stores, error, loading } = useSelector(
       ({ stores, loading}) => ({
         stores: stores.stores,
@@ -13,9 +12,6 @@ const StoreListContainer = () => {
         loading: loading['stores/FIND_STORES']
       }),
     );
-    useEffect(() => {
-      dispatch(findStores());
-    }, [dispatch]);
   
     return (
       <>

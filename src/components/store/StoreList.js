@@ -37,8 +37,6 @@ const StoreLink = styled(Link)`
 
 const StoreItem = ({ store }) => {
   const { storeId, name} = store;
-  console.log(store, name);
-
   const str = name.toUpperCase();
 
   return (

@@ -12,19 +12,32 @@ const [
     FIND_ORDERING_FAILURE,
 ] = createRequestActionTypes('orders/FIND_ORDERING'); //store 찾기
 
+const [
+    FIND_DONE,
+    FIND_DONE_SUCCESS,
+    FIND_DONE_FAILURE,
+] = createRequestActionTypes('orders/FIND_DONE'); //store 찾기
+
 export const findOrdering = createAction('orders/FIND_ORDERING', (storeId) => ({
     storeId
 }));
 
+export const findDone = createAction('orders/FIND_DONE', (storeId) => ({
+    storeId
+}));
+
 const findOrderingSaga = createRequestSaga(FIND_ORDERING, orderAPI.findOrdering);
+const findDoneSaga = createRequestSaga(FIND_DONE, orderAPI.findDone);
 
 export function* ordersSaga(){
     yield takeLatest(FIND_ORDERING, findOrderingSaga);
+    yield takeLatest(FIND_DONE, findDoneSaga);
 }
 
 const initialState = {
     orders: null,
     ordering: null,
+    done: null,
     error: null,
 };
 
@@ -32,7 +45,7 @@ const orders = handleActions(
     {
         [FIND_ORDERING]: state=>({
             ...state,
-            menuInfo: null,
+            ordering: null,
             error: null,
         }),
         [FIND_ORDERING_SUCCESS]: (state, { payload: ordering}) => ({
@@ -40,6 +53,19 @@ const orders = handleActions(
             ordering,
         }),
         [FIND_ORDERING_FAILURE]: (state, { payload: error}) => ({
+            ...state,
+            error,
+        }),
+        [FIND_DONE]: state=>({
+            ...state,
+            done: null,
+            error: null,
+        }),
+        [FIND_DONE_SUCCESS]: (state, { payload: done}) => ({
+            ...state,
+            done,
+        }),
+        [FIND_DONE_FAILURE]: (state, { payload: error}) => ({
             ...state,
             error,
         })

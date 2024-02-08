@@ -1,9 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import Responsive from "./Responsive";
-import profile from '../../img/profile.png';
+import setting from "../../img/setting.png";
 import home from '../../img/home.png';
-import cart  from '../../img/cart.png';
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
 const Wrapper =styled.div`
@@ -35,20 +34,19 @@ const Logo = styled.div`
 
 `;
 
-const NavBar = () => {
+const StoreNavBar = () => {
 
 
     return(
         <>
         <Wrapper>
             <Logo>SW</Logo>
-        <Text><Link to="/main"><img src={home}/></Link></Text>
-        <Text><img src={profile}/></Text>
-        <Text><img src={cart}/></Text>
+        <Text><Link to="/orders"><img src={home}/></Link></Text>
+        <Text><img src={setting}/></Text>
           </Wrapper>
       </>
     );
 
 }
 
-export default NavBar;
+export default StoreNavBar;

@@ -7,12 +7,14 @@ import OrderItem from "./OrderItem";
 const Span = styled(Responsive)`
     color : gray;
     margin-top : 20px;
+    transform: translateX(30px);
 `
 
 const NewOrderBlock = styled(Responsive)`
     margin-top: 1rem;
     margin-bottom: 3rem;
     padding : 15px;
+    transform: translateX(30px);
 `;
 
 const NewOrders = ({ orderings, loading }) => {

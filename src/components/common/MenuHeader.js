@@ -5,6 +5,8 @@ import Responsive from "./Responsive";
 import { useSelector, useDispatch } from "react-redux";
 import { findStore } from "../../modules/store";
 import loading from "../../modules/loading";
+import Image from '../../img/menu_hamburger.png';
+import NavBar from "./NavBar";
 
 
 const HeaderBlock = styled(Responsive)`
@@ -14,6 +16,7 @@ const HeaderBlock = styled(Responsive)`
   display: flex;
   flex-direction : column;
   justify-content: center;
+  
 `
 
 const Message = styled.div`
@@ -28,6 +31,13 @@ font-size : 0.7rem;
 span {
     color : #f53920;
 }
+`;
+
+const Menu = styled.img`
+  width : 26px;
+  height: 26px;
+  margin-left : auto;
+  transform: translateY(-70%);
 `;
 
 const MenuHeader = ({ name }) => {
@@ -51,18 +61,21 @@ const MenuHeader = ({ name }) => {
       
 
     return(
+      <>
         <HeaderBlock>
+          
         {!loading &&  (
-            <div>
-            <Message>
+          <>
+          <Message>
                 {str}
             </Message>
             <Waiting>
                 대기 인원 : <span>{counts}</span> 명
             </Waiting>
-            </div>
+            </>
             )}
         </HeaderBlock>
+        </>
     );
 };
 

@@ -23,6 +23,7 @@ const Text = styled.div`
 
 const MenuListBlock = styled(Responsive)`
   margin-top: 1rem;
+  transform: translateX(30px);
 `;
 
 const MenuItem = ({ menu }) => {

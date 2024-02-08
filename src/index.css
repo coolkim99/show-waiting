@@ -1,13 +1,13 @@
 html, body {
   margin: 0;
   height:100%;
-  overflow: hidden;
+  overflow-x: scroll;
 }
 
 #root{
   top:0px;
   left:0px;
-  position:relative;
+  /* position:relative; */
 }
 
 span {

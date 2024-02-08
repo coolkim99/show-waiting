@@ -21,6 +21,7 @@ const StoreItemBlock = styled.div`
   & + & {
     margin-top: 1rem;
   }
+  transform: translateX(30px);
 
 `;
 

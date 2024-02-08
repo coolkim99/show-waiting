@@ -13,6 +13,7 @@ import Responsive from '../../components/common/Responsive';
 const Span = styled(Responsive)`
     color : gray;
     margin-top : 20px;
+    transform: translateX(30px);
 `
 
 const MenuListContainer = ({ match, history }) => {

@@ -4,6 +4,7 @@ import NewOrders from "../../components/storeOrder/NewOrders";
 import { withRouter } from 'react-router-dom';
 import { useSelector, useDispatch } from "react-redux";
 import { findOrdering, findDone } from "../../modules/orders";
+import { findStore } from "../../modules/store";
 
 const OrdersContainer = () => {
     const dispatch = useDispatch();
@@ -25,6 +26,7 @@ const OrdersContainer = () => {
         try {
           await dispatch(findOrdering(authId));
           await dispatch(findDone(authId));
+          await dispatch(findStore(authId));
         } catch (error) {
           console.error(error);
         }

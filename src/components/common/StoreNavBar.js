@@ -4,6 +4,7 @@ import Responsive from "./Responsive";
 import setting from "../../img/setting.png";
 import home from '../../img/home.png';
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
+import { useSelector } from "react-redux";
 
 const Wrapper =styled.div`
 width : 60px;
@@ -35,14 +36,16 @@ const Logo = styled.div`
 `;
 
 const StoreNavBar = () => {
-
+    const {storeId, name} = useSelector(({ auth}) => ({
+        storeId : auth.auth.result.id,
+      }));
 
     return(
         <>
         <Wrapper>
             <Logo>SW</Logo>
         <Text><Link to="/orders"><img src={home}/></Link></Text>
-        <Text><img src={setting}/></Text>
+        <Text><Link to={`/manage/${storeId}`}><img src={setting}/></Link></Text>
           </Wrapper>
       </>
     );

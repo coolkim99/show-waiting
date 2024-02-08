@@ -9,6 +9,7 @@ import JoinPage from "./pages/JoinPage";
 import MainPage from "./pages/MainPage";
 import MenuPage from "./pages/MenuPage";
 import OrderListPage from "./pages/OrderListPage";
+import ManagePage from "./pages/ManagePage";
 
 const Routers = () => {
     return (
@@ -19,6 +20,7 @@ const Routers = () => {
             <Route path="/main" component={MainPage}/>
             <Route path="/menuList/:storeId/:name" component={MenuPage}/>
             <Route path="/orders" component={OrderListPage}/>
+            <Route path="/manage/:storeId" component={ManagePage} />
         </BrowserRouter>
     )
 }

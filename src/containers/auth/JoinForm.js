@@ -52,24 +52,6 @@ const RegisterForm = ({ history }) => {
     useEffect(() => {
       dispatch(initializeForm('register'));
     }, [dispatch]);
-  
-    // useEffect(() => {
-    //     if (authError) {
-    //         // 계정명이 이미 존재할 때
-    //         if (authError.response.status === 409) {
-    //           setError('이미 존재하는 계정명입니다.');
-    //           return;
-    //         }
-    //         // 기타 이유
-    //         setError('회원가입 실패');
-    //         return;
-    //       }
-    //     if (auth) {
-    //         console.log("회원가입 성공");
-    //         dispatch(check(auth.result.id));
-    //     }
-    // }, [auth, authError, dispatch]
-    // );
 
     useEffect(() => {
     if (authError) {

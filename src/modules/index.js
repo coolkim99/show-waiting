@@ -8,6 +8,7 @@ import menu, {menuSaga} from './menu';
 import store, {storeSaga} from './store';
 import orders, {ordersSaga} from './orders';
 import process, {processSaga} from './process';
+import item, {itemSaga} from './item';
 
 const rootReducer = combineReducers({
   loading,
@@ -17,12 +18,13 @@ const rootReducer = combineReducers({
   menu,
   store,
   orders,
-  process
+  process,
+  item
 });
 
 export function* rootSaga() {
   yield all([authSaga(), userSaga(), storesSaga(), menuSaga(), storeSaga(), ordersSaga(),
-            processSaga()]);
+            processSaga(), itemSaga()]);
 }
 
 export default rootReducer;

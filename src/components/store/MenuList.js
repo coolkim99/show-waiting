@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Responsive from "../common/Responsive";
 import Button from "../common/Button";
 import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { doOrder, changeField, updateCount } from "../../modules/order";
 
 const MenuItemBlock = styled.div`
@@ -92,10 +93,11 @@ const MenuItem = ({ menu, selected, onClick}) => {
   );
 };
 
-const MenuList = ({ menus, error, loading, storeId }) => {
+const MenuList = ({ menus, error, loading, storeId}) => {
   const [selectedItemId, setSelectedItemId] = useState(null);
 
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const {userId, count} = useSelector(({ auth, order }) => ({
     userId: auth.auth.result.id,
@@ -118,7 +120,8 @@ const MenuList = ({ menus, error, loading, storeId }) => {
     }
     else {
       console.log(storeId, selectedItemId, userId, count);
-      dispatch(doOrder(storeId, selectedItemId, userId, count));
+      await dispatch(doOrder(storeId, selectedItemId, userId, count));
+      history.push('/confirm');
     }
 };
 

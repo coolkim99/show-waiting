@@ -37,7 +37,7 @@ const MenuListContainer = ({ match, history }) => {
   return (
     <>
     <Span>메뉴 리스트</Span>
-    <MenuList menus={menu} error={error} loading={loading}  />
+    <MenuList menus={menu} error={error} loading={loading} storeId={storeId}  />
     </>
   );
 };

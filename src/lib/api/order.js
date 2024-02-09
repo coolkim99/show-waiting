@@ -16,3 +16,10 @@ export const orderNotDone = ({ id }) => {
     console.log(id);
     return client.put(`/api/notDone`, { id });
 } 
+
+export const order = ({storeId, itemId, userId, count}) => {
+    console.log(storeId, itemId, userId, count);
+    return client.post(`/api/${storeId}/order/${itemId}`, {
+        userId, count 
+    })
+}

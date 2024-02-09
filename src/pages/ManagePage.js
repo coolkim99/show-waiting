@@ -3,7 +3,8 @@ import MainHeader from "../components/common/MainHeader";
 import StoreNavBar from "../components/common/StoreNavBar";
 import AddItemContainer from "../containers/manage/AddItemContainer";
 import ItemTemplate from "../components/manage/ItemTemplate";
-import MenuListContainer from "../containers/store/MenuListContainer";
+import ManageItemList from "../components/manage/ManageItemList";
+import ManageItemListContainer from "../containers/manage/ManageItemListContainer";
 
 const ManagePage = () => {
     return (
@@ -13,7 +14,7 @@ const ManagePage = () => {
         <ItemTemplate>
             <AddItemContainer/>
         </ItemTemplate>
-        <MenuListContainer/>
+        <ManageItemListContainer/>
         
         </>
     );

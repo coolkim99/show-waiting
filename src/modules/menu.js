@@ -12,7 +12,7 @@ const [
     FIND_MENU_FAILURE,
 ] = createRequestActionTypes('menu/FIND_MENU'); //store 찾기
 
-export const findMenu = createAction('menu/FIND_MENU', (storeId) => ({
+export const findMenu = createAction(FIND_MENU, (storeId) => ({
     storeId
 }));
 

@@ -18,11 +18,11 @@ const [
     FIND_DONE_FAILURE,
 ] = createRequestActionTypes('orders/FIND_DONE'); //store 찾기
 
-export const findOrdering = createAction('orders/FIND_ORDERING', (storeId) => ({
+export const findOrdering = createAction(FIND_ORDERING, (storeId) => ({
     storeId
 }));
 
-export const findDone = createAction('orders/FIND_DONE', (storeId) => ({
+export const findDone = createAction(FIND_DONE, (storeId) => ({
     storeId
 }));
 

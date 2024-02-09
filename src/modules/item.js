@@ -13,13 +13,18 @@ const [
     ADD_ITEM_SUCCESS,
     ADD_ITEM_FAILURE,
 ] = createRequestActionTypes('item/ADD_ITEM'); //store 찾기
+const [
+    DELETE_ITEM,
+    DELETE_ITEM_SUCCESS,
+    DELETE_ITEM_FAILURE,
+] = createRequestActionTypes('item/DELETE_ITEM'); //store 찾기
 
 
 export const changeForm = createAction(
     CHANGE_FIELD,
     ({ form, key, value }) => ({
-      form, // register , login
-      key, // username, password, passwordConfirm
+      form, 
+      key, 
       value, // 실제 바꾸려는값
     })
   );
@@ -29,10 +34,20 @@ export const addItem = createAction(ADD_ITEM, ({storeId, name, price}) => ({
     storeId, name, price
 }));
 
+// export const orderDone = createAction('process/DONE', (id) => ({
+//     id
+// }));
+
+export const deleteItem = createAction(DELETE_ITEM, (id)=>({
+    id
+}));
+
 const addItemSaga = createRequestSaga(ADD_ITEM, itemAPI.addItem);
+const deleteItemSaga = createRequestSaga(DELETE_ITEM, itemAPI.deleteItem);
 
 export function* itemSaga(){
     yield takeLatest(ADD_ITEM, addItemSaga);
+    yield takeLatest(DELETE_ITEM, deleteItemSaga);
 }
 
 const initialState = {
@@ -61,6 +76,14 @@ const item = handleActions(
             item,
         }),
         [ADD_ITEM_FAILURE]: (state, { payload: error}) => ({
+            ...state,
+            error,
+        }),
+        [DELETE_ITEM_SUCCESS]: (state, { payload: item}) => ({
+            ...state,
+            item,
+        }),
+        [DELETE_ITEM_FAILURE]: (state, { payload: error}) => ({
             ...state,
             error,
         })

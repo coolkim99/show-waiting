@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import Responsive from "../common/Responsive";
 import Button from "../common/Button";
+import { deleteItem } from "../../modules/item";
+import { useDispatch } from "react-redux";
 
 const MenuItemBlock = styled.div`
   background-color: rgba(255, 157, 71, 0.2);
@@ -44,8 +46,9 @@ const MenuItem = ({ menu, selected, onClick }) => {
   );
 };
 
-const MenuList = ({ menus, error, loading }) => {
+const ManageItemList = ({ menus, error, loading }) => {
   const [selectedItemId, setSelectedItemId] = useState(null);
+  const dispatch = useDispatch();
 
   const handleClick = (itemId) => {
     setSelectedItemId(itemId);
@@ -62,9 +65,11 @@ const MenuList = ({ menus, error, loading }) => {
       alert("선택된 상품이 없습니다. 삭제하고 싶으신 상품을 선택하여 주세요.");
     }
     else {
-      // await dispatch(findDone(authId));
+      await dispatch(deleteItem(selectedItemId));
     }
     console.log("onDelete", selectedItemId);
+    // await dispatch(findDone(authId));
+    // await dispatch(findOrdering(authId));
 };
 
   return (
@@ -87,9 +92,9 @@ const MenuList = ({ menus, error, loading }) => {
           ))}
         </div>
       )}
-      <Button>주문</Button>
+      <Button onClick={onDelete}>상품 삭제</Button>
     </MenuListBlock>
   );
 };
 
-export default MenuList;
+export default ManageItemList;

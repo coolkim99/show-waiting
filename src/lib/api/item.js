@@ -8,3 +8,10 @@ export const addItem = ( { storeId, name, price } ) => {
     name, price
 });
 } 
+
+export const deleteItem = ({ id }) => {
+    console.log(id);
+    return client.delete(`/api/items/delete`, { data: {
+        id: id,
+        }, });
+}

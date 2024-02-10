@@ -135,7 +135,7 @@ const MenuList = ({ menus, error, loading, storeId}) => {
         </div>
       )}
 
-      {!loading && menus && (
+      {!check && !loading && menus && (
         <div>
           {menus.map((menu) => (
             <MenuItem
@@ -145,9 +145,10 @@ const MenuList = ({ menus, error, loading, storeId}) => {
               onClick={handleClick}
             />
           ))}
+          <Button onClick={onOrder}>주문</Button>
         </div>
       )}
-      <Button onClick={onOrder}>주문</Button>
+      
     </MenuListBlock>
   );
 };

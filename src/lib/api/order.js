@@ -23,3 +23,8 @@ export const order = ({storeId, itemId, userId, count}) => {
         userId, count 
     })
 }
+
+//주문 완료
+export const cancle = ({ id }) => {
+    return client.put(`/api/cancle`, { id });
+} 

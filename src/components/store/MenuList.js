@@ -4,7 +4,9 @@ import Responsive from "../common/Responsive";
 import Button from "../common/Button";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
-import { doOrder, changeField, updateCount } from "../../modules/order";
+import { doOrder, updateCount } from "../../modules/order";
+import { findOrdering, findDone } from "../../modules/orders";
+import { Redirect } from 'react-router-dom';
 
 const MenuItemBlock = styled.div`
   background-color: rgba(255, 157, 71, 0.2);

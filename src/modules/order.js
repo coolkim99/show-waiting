@@ -39,6 +39,11 @@ const order = handleActions(
             ...state,
             count,
           }),
+          [ORDER]: state=>({
+            ...state,
+            order: null,
+            error: null,
+        }),
         [ORDER_SUCCESS]: (state, { payload: order}) => ({
             ...state,
             order,

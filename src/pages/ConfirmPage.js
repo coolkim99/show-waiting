@@ -1,10 +1,12 @@
 import React from "react";
 import NavBar from "../components/common/NavBar";
+import ConfirmContainer from "../containers/store/ConfirmContainer";
+
 const ConfirmPage = () => {
     return (
         <>
         <NavBar/>
-        <div>확인 페이지</div>
+        <ConfirmContainer/>
         </>
     );
 }

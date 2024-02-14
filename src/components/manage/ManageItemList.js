@@ -84,7 +84,7 @@ const ManageItemList = ({ menus, error, loading }) => {
   return (
     <MenuListBlock>
       {check && (
-        <div style={{ fontSize: "1.5rem", fontWeight: "bold", padding: "4% 0" }}>
+        <div style={{ fontSize: "1.2rem", fontWeight: "bold", padding: "4% 0" }}>
           준비된 메뉴가 없습니다.
         </div>
       )}

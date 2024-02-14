@@ -7,21 +7,15 @@ import { Link } from 'react-router-dom';
 
 const OrderListBlock = styled(Responsive)`
   margin-top: 1rem;
+  transform: translateX(30px);
 `;
 
 const OrderItemBlock = styled.div`
   padding : 10px;
   font-size : 0.8rem;
-  &:hover {
-    background: lightgray;
-    color: white;
-    text-decoration: none;
-    border: 0.8px solid white;
-  }
   & + & {
     margin-top: 1rem;
   }
-  transform: translateX(30px);
   background-color: rgba(255, 157, 71, 0.2);
 
 `;

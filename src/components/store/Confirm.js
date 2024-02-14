@@ -4,6 +4,7 @@ import Responsive from "../common/Responsive";
 import { useSelector, useDispatch } from "react-redux";
 import Button from "../common/Button";
 import { cancleOrder } from "../../modules/order";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 const ConfirmBlock = styled(Responsive)`
   display : flex;
@@ -14,20 +15,39 @@ const ConfirmBlock = styled(Responsive)`
 const Title = styled.div`
     font-size : 1rem;
     font-weight : bold;
-    margin-bottom : 2rem;
+    padding-bottom : 2rem;
+    margin : 0 auto;
 `
 
 const Text = styled.div`
+font-size : 0.8rem;
  & + & {
-    margin-top : 15px;
+    margin-top : 10px;
+ }
+ span {
+    color: gray;
  }
 `
 
+const ButtonWrapper = styled.div`
+ display : flex;
+ button {
+    margin-right : 20px;
+ }
+`
+
+const ButtonWithMarginTop = styled(Button)`
+  margin-top: 0.9rem;
+  margin-bottom: 1.2rem;
+  width : 45%;
+  background-color: rgba(235, 64, 52, 0.1);
+`;
 
 const Confirm  = ({order, date, userName, loading}) => {
     const [check, setCheck] = useState(false);
     const [status, setStatus] = useState("");
     const dispatch = useDispatch();
+    const history = useHistory();
     useEffect(() => {
       if(order){
         setCheck(true);   //게시글 존재 여부 판단
@@ -55,6 +75,11 @@ const Confirm  = ({order, date, userName, loading}) => {
         }
     };
 
+    const onConfirm = () => {
+        history.push("/main");
+    }
+
+
 
 
     return (
@@ -63,11 +88,14 @@ const Confirm  = ({order, date, userName, loading}) => {
         <>
         <ConfirmBlock>
             <Title>{userName} 님의 주문</Title>
-            <Text>주문 시간 : {date}</Text>
-            <Text>매장 : {order.storeName}</Text>
+            <Text><span>주문 시간 : </span>{date}</Text>
+            <Text><span>매장 : </span>{order.storeName}</Text>
             <Text>{order.itemName} {order.count} 개</Text>
-            <Text>주문 상태 : {status}</Text>
-            <Button onClick={onCancle}>주문 취소</Button>
+            <Text><span>주문 상태 : </span>{status}</Text>
+            <ButtonWrapper>
+            <ButtonWithMarginTop onClick={onCancle}>주문 취소</ButtonWithMarginTop>
+            <ButtonWithMarginTop onClick={onConfirm}>확인</ButtonWithMarginTop>
+            </ButtonWrapper>
         </ConfirmBlock>
         
         </>

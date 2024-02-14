@@ -35,8 +35,8 @@ const DoneOrders = ({ dones, loading }) => {
         <Span>주문 완료 (<span style={{color: "red"}}>{count}</span> 개)</Span>
         <DoneOrderBlock>
         {check && 
-            <div style={{fontSize: '1.5rem', fontWeight: 'bold', padding:'4% 0'}}>
-                들어온 주문이 없습니다.</div>}
+            <div style={{fontSize: '1.2rem', fontWeight: 'bold', padding:'4% 0'}}>
+                완료된 주문이 없습니다.</div>}
 
         {!loading && dones && (
             <div>

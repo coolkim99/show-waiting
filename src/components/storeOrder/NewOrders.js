@@ -40,7 +40,7 @@ const NewOrders = ({ orderings, loading }) => {
         <NewOrderBlock>
             
         {check && 
-            <div style={{fontSize: '1.5rem', fontWeight: 'bold', padding:'4% 0'}}>
+            <div style={{fontSize: '1.2rem', fontWeight: 'bold', padding:'4% 0'}}>
                 들어온 주문이 없습니다.</div>}
 
         {!loading && orderings && (

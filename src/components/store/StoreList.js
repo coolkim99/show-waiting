@@ -61,7 +61,7 @@ const StoreList = ({ stores, loading, error }) => {
     <StoreListBlock>
       {/*  로딩 중 아니고, 포스트 배열이 존재할 때만 보여줌 */}
       {check && 
-        <div style={{fontSize: '1.5rem', fontWeight: 'bold', padding:'4% 0'}}>
+        <div style={{fontSize: '1.2rem', fontWeight: 'bold', padding:'4% 0'}}>
           등록된 매장이 없습니다.</div>}
 
       {!loading && stores && (

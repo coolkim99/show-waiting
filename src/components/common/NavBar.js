@@ -4,7 +4,9 @@ import home from '../../img/home.png';
 import receipt from '../../img/receipt.png';
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import { Tooltip } from "react-tooltip";
-import logout from '../../img/logout.png';
+import logoutImg from '../../img/logout.png';
+import { useDispatch } from "react-redux";
+import { logout } from '../../modules/auth';
 
 const Wrapper =styled.div`
 width : 60px;
@@ -45,7 +47,10 @@ const Logo = styled.div`
 
 
 const NavBar = () => {
-
+    const dispatch = useDispatch();
+    const onLogout = () => {
+        dispatch(logout());
+    }
     return(
         <>
         <Wrapper>
@@ -56,7 +61,7 @@ const NavBar = () => {
         <Text><Link to="/myorders" id="myorders"><img style={{width: "35px"}} src={receipt}/></Link></Text>
         <Tooltip anchorSelect="#myorders" place="right"
             style={{backgroundColor:"#f2eeed", color:"black"}}>주문 내역</Tooltip>
-        <Logout><Link to="/" id="logout"><img src={logout}/></Link></Logout>
+        <Logout><Link to="/" id="logout" onClick={onLogout}><img src={logoutImg}/></Link></Logout>
         <Tooltip anchorSelect="#logout" place="right"
             style={{backgroundColor:"#f2eeed", color:"black"}}>로그아웃</Tooltip>  
         

@@ -3,18 +3,16 @@ import { useSelector, useDispatch } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import AuthForm from '../../components/auth/AuthForm';
 import { changeField, initializeForm, login } from '../../modules/auth';
-import { check } from '../../modules/user';
 import { findStores } from '../../modules/stores';
 import { findDone, findOrdering } from '../../modules/orders';
 
 const LoginForm = ({ history }) => {
     const [error, setError] = useState(null);
     const dispatch = useDispatch();
-    const { form, auth, authError, user } = useSelector(({ auth, user }) => ({
+    const { form, auth, authError} = useSelector(({ auth }) => ({
       form: auth.login,
       auth: auth.auth,
-      authError: auth.authError,
-      user: user.user
+      authError: auth.authError
     }));
 
     // 인풋 변경 이벤트 핸들러
@@ -52,7 +50,7 @@ const LoginForm = ({ history }) => {
           console.log('로그인 성공');
           console.log(auth.result.id);
         }
-      }, [auth, authError, dispatch, user]);
+      }, [auth, authError, dispatch]);
 
       const handleOrders = async (dispatch, userId, history) => {
         try {

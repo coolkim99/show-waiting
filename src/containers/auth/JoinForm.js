@@ -3,17 +3,15 @@ import { useDispatch, useSelector } from 'react-redux';
 import { changeField, initializeForm, register } from '../../modules/auth';
 import AuthForm from '../../components/auth/AuthForm';
 import {withRouter} from 'react-router-dom';
-import { check } from '../../modules/user';
 import { findStores } from '../../modules/stores';
 
 const RegisterForm = ({ history }) => {
     const [error, setError] = useState(null);
     const dispatch = useDispatch();
-    const { form, auth, authError, user } = useSelector(({ auth, user }) => ({
+    const { form, auth, authError } = useSelector(({ auth }) => ({
       form: auth.register,
       auth: auth.auth,
-      authError: auth.authError,
-      user: user.user
+      authError: auth.authError
     }));
     // 인풋 변경 이벤트 핸들러
     const onChange = e => {
@@ -69,7 +67,6 @@ const RegisterForm = ({ history }) => {
     useEffect(() => {
       if (auth) {
         console.log("회원가입 성공");
-        dispatch(check(auth.result.id));
       }
     }, [auth, dispatch]);
 

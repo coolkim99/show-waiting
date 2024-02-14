@@ -7,6 +7,7 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { composeWithDevTools } from 'redux-devtools-extension';
+import { compose } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 import rootReducer, { rootSaga } from './modules';
 
@@ -14,7 +15,12 @@ import rootReducer, { rootSaga } from './modules';
 const sagaMiddleware = createSagaMiddleware();
 const store = createStore(
   rootReducer, 
-  composeWithDevTools(applyMiddleware(sagaMiddleware))
+  compose(
+    applyMiddleware(sagaMiddleware),
+    window.navigator.userAgent.includes('Chrome') ?	// 추가
+      window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__() : 
+      compose
+  )
 );
 
 sagaMiddleware.run(rootSaga);

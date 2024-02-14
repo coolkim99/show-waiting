@@ -11,9 +11,15 @@ const [CHECK, CHECK_SUCCESS, CHECK_FAILURE] = createRequestActionTypes(
     'user/CHECK',
   );
 
+const LOGOUT = 'user/LOGOUT';
+  
+
 
 // export const tempSetUser = createAction(user, user => user);
 export const check = createAction(CHECK,(id) => ({id}));
+
+export const logout = createAction(LOGOUT);
+
 
 const checkSaga = createRequestSaga(CHECK, authAPI.check);
 
@@ -42,6 +48,10 @@ export default handleActions(
     [CHECK_FAILURE]: (state, { payload: checkError}) => ({
         ...state,
         checkError,
+    }),
+    [LOGOUT]: state => ({
+      ...state,
+      user: null,
     }),
   },
   initialState,

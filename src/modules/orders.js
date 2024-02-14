@@ -5,7 +5,7 @@ import createRequestSaga, {
   createRequestActionTypes,
 } from '../lib/createRequestSaga';
 
-const INITIALIZE = 'orders/INITIALIZE'; // 모든 내용 초기화
+
 const [
     FIND_ORDERING,
     FIND_ORDERING_SUCCESS,

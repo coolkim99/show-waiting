@@ -1,7 +1,6 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React from 'react';
+import { useSelector } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import StoreList from "../../components/store/StoreList";
 import Confirm from '../../components/store/Confirm';
 
 const ConfirmContainer = () => {

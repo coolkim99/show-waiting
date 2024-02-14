@@ -1,7 +1,5 @@
 import React from "react";
 import { BrowserRouter, Route, withRouter } from "react-router-dom";
-import PublicRoute from "./lib/router/PublicRoute";
-import PrivateRoute from "./lib/router/PrivateRoute";
 
 import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";

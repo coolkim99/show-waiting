@@ -1,11 +1,12 @@
 import React from "react";
 import styled from "styled-components";
-import Responsive from "./Responsive";
 import setting from "../../img/setting.png";
 import home from '../../img/home.png';
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Tooltip } from "react-tooltip";
+import logoutImg from '../../img/logout.png';
+import { logout } from '../../modules/auth';
 
 const Wrapper =styled.div`
 width : 60px;
@@ -37,10 +38,25 @@ const Logo = styled.div`
 
 `;
 
+const Logout = styled.div`
+  bottom : 30px;
+  position : absolute;
+  img{
+    width : 30px;
+    margin-top: 40px;
+    margin-left : 15px;
+  }
+`;
+
 const StoreNavBar = () => {
+    const dispatch = useDispatch();
     const {storeId, name} = useSelector(({ auth}) => ({
         storeId : auth.auth.result.id,
       }));
+
+    const onLogout = () => {
+        dispatch(logout());
+    }
 
     return(
         <>
@@ -52,7 +68,12 @@ const StoreNavBar = () => {
         <Text><Link to={`/manage/${storeId}`} id="manage"><img src={setting}/></Link></Text>
         <Tooltip anchorSelect="#manage" place="right"
                 style={{backgroundColor:"#f2eeed", color:"black"}}>메뉴 관리</Tooltip>
-          </Wrapper>
+        <Logout><Link to="/" id="logout" onClick={onLogout}><img src={logoutImg}/></Link></Logout>
+        <Tooltip anchorSelect="#logout" place="right"
+            style={{backgroundColor:"#f2eeed", color:"black"}}>로그아웃</Tooltip>  
+        </Wrapper>
+
+          
       </>
     );
 

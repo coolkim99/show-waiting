@@ -1,11 +1,10 @@
 import { createAction, handleActions } from 'redux-actions';
-import { takeLatest, call } from 'redux-saga/effects';
+import { takeLatest } from 'redux-saga/effects';
 import * as orderAPI from '../lib/api/order';
 import createRequestSaga, {
   createRequestActionTypes,
 } from '../lib/createRequestSaga';
 
-const INITIALIZE = 'process/INITIALIZE'; // 모든 내용 초기화
 const [
     DONE,
     DONE_SUCCESS,

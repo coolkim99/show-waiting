@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import Button from '../common/Button';
-import { useState } from 'react';
 
 /**
  * 회원가입 또는 로그인 폼을 보여줍니다.
@@ -92,10 +91,6 @@ const AuthForm = ({type, form, onChange, onSubmit, error}) => {
     const text = textMap[type];
 
     const selectList = ["CONSUMER", "STORE"];
-    const [Selected, setSelected] = useState("");
-    const handleSelect = (e) => {
-        setSelected(e.target.value);
-      };
 
   return (
     <AuthFormBlock>

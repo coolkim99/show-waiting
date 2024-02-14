@@ -1,12 +1,7 @@
 import React, {useEffect, useState} from "react";
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
 import Responsive from "./Responsive";
-import { useSelector, useDispatch } from "react-redux";
-import { findStore } from "../../modules/store";
-import loading from "../../modules/loading";
-import Image from '../../img/menu_hamburger.png';
-import NavBar from "./NavBar";
+import { useSelector } from "react-redux";
 
 
 const HeaderBlock = styled(Responsive)`
@@ -31,13 +26,6 @@ font-size : 0.7rem;
 span {
     color : #f53920;
 }
-`;
-
-const Menu = styled.img`
-  width : 26px;
-  height: 26px;
-  margin-left : auto;
-  transform: translateY(-70%);
 `;
 
 const MenuHeader = ({ name }) => {

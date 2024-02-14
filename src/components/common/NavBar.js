@@ -1,12 +1,10 @@
 import React from "react";
 import styled from "styled-components";
-import Responsive from "./Responsive";
-import profile from '../../img/profile.png';
 import home from '../../img/home.png';
-import cart  from '../../img/cart.png';
 import receipt from '../../img/receipt.png';
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import { Tooltip } from "react-tooltip";
+import logout from '../../img/logout.png';
 
 const Wrapper =styled.div`
 width : 60px;
@@ -16,6 +14,15 @@ float : left;
 `;
 
 const Text = styled.div`
+  img{
+    width : 30px;
+    margin-top: 40px;
+    margin-left : 15px;
+  }
+`;
+const Logout = styled.div`
+  bottom : 30px;
+  position : absolute;
   img{
     width : 30px;
     margin-top: 40px;
@@ -49,7 +56,11 @@ const NavBar = () => {
         <Text><Link to="/myorders" id="myorders"><img style={{width: "35px"}} src={receipt}/></Link></Text>
         <Tooltip anchorSelect="#myorders" place="right"
             style={{backgroundColor:"#f2eeed", color:"black"}}>주문 내역</Tooltip>
-          </Wrapper>
+        <Logout><Link to="/" id="logout"><img src={logout}/></Link></Logout>
+        <Tooltip anchorSelect="#logout" place="right"
+            style={{backgroundColor:"#f2eeed", color:"black"}}>로그아웃</Tooltip>  
+        
+        </Wrapper>
       </>
     );
 

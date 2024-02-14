@@ -17,6 +17,9 @@ const [LOGIN, LOGIN_SUCCESS, LOGIN_FAILURE] = createRequestActionTypes(
     'auth/LOGIN'
   );
 
+  const LOGOUT = 'auth/LOGOUT';
+  
+
 export const changeField = createAction(
     CHANGE_FIELD,
     ({ form, key, value }) => ({
@@ -37,6 +40,7 @@ export const changeField = createAction(
     email,
     password
   }));
+  export const logout = createAction(LOGOUT);
   
   const registerSaga = createRequestSaga(REGISTER, authAPI.join);
   const loginSaga = createRequestSaga(LOGIN, authAPI.login);
@@ -71,6 +75,7 @@ export const changeField = createAction(
       [INITIALIZE_FORM]: (state, { payload: form }) => ({
         ...state,
         [form]: initialState[form],
+        auth: null,
         authError: null // 폼 전환 시 회원 인증 에러 초기화
       }),
       // 회원가입 성공
@@ -94,7 +99,11 @@ export const changeField = createAction(
       [LOGIN_FAILURE]: (state, { payload: error }) => ({
         ...state,
         authError: error
-      })
+      }),
+      [LOGOUT]: state => ({
+        ...state,
+        auth: null,
+      }),
     },
     initialState
   );

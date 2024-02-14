@@ -1,11 +1,7 @@
 import React from "react";
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
 import Responsive from "./Responsive";
 import { useSelector } from "react-redux";
-import Image from '../../img/menu_hamburger.png';
-import HoverImage from '../../img/hamburder_gray.png';
-import NavBar from "./NavBar";
 
 
 const HeaderBlock = styled(Responsive)`
@@ -26,15 +22,6 @@ const Message = styled.div`
     font-weight : bold;
   }
 `;
-
-const LinkTo = styled(Link)`
-  text-decoration: none;
-  color: white;
-  &:hover{
-    text-decoration: none;
-    color: #afafaf;
-  }
-`
 
 const Header = () => {
 

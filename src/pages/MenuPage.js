@@ -4,7 +4,7 @@ import MenuHeader from '../components/common/MenuHeader';
 import NavBar from '../components/common/NavBar';
 
 const MenuPage = ({match}) => {
-    let { storeId, name } = match.params;
+    let { name } = match.params;
     console.log(name);
     return(
         <>

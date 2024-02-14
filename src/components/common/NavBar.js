@@ -6,6 +6,7 @@ import home from '../../img/home.png';
 import cart  from '../../img/cart.png';
 import receipt from '../../img/receipt.png';
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
+import { Tooltip } from "react-tooltip";
 
 const Wrapper =styled.div`
 width : 60px;
@@ -35,14 +36,19 @@ const Logo = styled.div`
   font-weight : bold;
 `;
 
+
 const NavBar = () => {
 
     return(
         <>
         <Wrapper>
             <Logo>SW</Logo>
-        <Text><Link to="/main"><img src={home}/></Link></Text>
-        <Text><Link to="/myorders"><img style={{width: "35px"}} src={receipt}/></Link></Text>
+        <Text><Link to="/main" id="home"><img src={home}/></Link></Text>
+        <Tooltip anchorSelect="#home" place="right"
+                style={{backgroundColor:"#f2eeed", color:"black"}}>홈</Tooltip>
+        <Text><Link to="/myorders" id="myorders"><img style={{width: "35px"}} src={receipt}/></Link></Text>
+        <Tooltip anchorSelect="#myorders" place="right"
+            style={{backgroundColor:"#f2eeed", color:"black"}}>주문 내역</Tooltip>
           </Wrapper>
       </>
     );

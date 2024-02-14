@@ -5,6 +5,7 @@ import setting from "../../img/setting.png";
 import home from '../../img/home.png';
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import { useSelector } from "react-redux";
+import { Tooltip } from "react-tooltip";
 
 const Wrapper =styled.div`
 width : 60px;
@@ -45,8 +46,12 @@ const StoreNavBar = () => {
         <>
         <Wrapper>
             <Logo>SW</Logo>
-        <Text><Link to="/orders"><img src={home}/></Link></Text>
-        <Text><Link to={`/manage/${storeId}`}><img src={setting}/></Link></Text>
+        <Text><Link to="/orders" id="home"><img src={home}/></Link></Text>
+        <Tooltip anchorSelect="#home" place="right"
+                style={{backgroundColor:"#f2eeed", color:"black"}}>홈</Tooltip>
+        <Text><Link to={`/manage/${storeId}`} id="manage"><img src={setting}/></Link></Text>
+        <Tooltip anchorSelect="#manage" place="right"
+                style={{backgroundColor:"#f2eeed", color:"black"}}>메뉴 관리</Tooltip>
           </Wrapper>
       </>
     );

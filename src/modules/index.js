@@ -10,6 +10,7 @@ import orders, {ordersSaga} from './orders';
 import process, {processSaga} from './process';
 import item, {itemSaga} from './item';
 import order, {orderSaga} from './order';
+import myOrders, {myOrderSaga} from './myOrder';
 
 const rootReducer = combineReducers({
   loading,
@@ -21,12 +22,13 @@ const rootReducer = combineReducers({
   orders,
   process,
   item,
-  order
+  order,
+  myOrders,
 });
 
 export function* rootSaga() {
   yield all([authSaga(), userSaga(), storesSaga(), menuSaga(), storeSaga(), ordersSaga(),
-            processSaga(), itemSaga(), orderSaga()]);
+            processSaga(), itemSaga(), orderSaga(), myOrderSaga()]);
 }
 
 export default rootReducer;

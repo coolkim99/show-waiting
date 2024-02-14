@@ -4,14 +4,14 @@ import Responsive from "./Responsive";
 import profile from '../../img/profile.png';
 import home from '../../img/home.png';
 import cart  from '../../img/cart.png';
+import receipt from '../../img/receipt.png';
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
 const Wrapper =styled.div`
 width : 60px;
 float : left;
     min-height : 100vh;
-    // background-color: lightgray;
-    border-right : 0.8px solid #d63f2b;
+    background-color: #d63f2b;
 `;
 
 const Text = styled.div`
@@ -30,21 +30,19 @@ const Logo = styled.div`
   padding : 2px;
   border: 0.8px solid #d63f2b;
   border-radius : 25px;
-  background-color : white;
   font-size : 1.2rem;
-
+  color : white;
+  font-weight : bold;
 `;
 
 const NavBar = () => {
-
 
     return(
         <>
         <Wrapper>
             <Logo>SW</Logo>
         <Text><Link to="/main"><img src={home}/></Link></Text>
-        <Text><img src={profile}/></Text>
-        <Text><img src={cart}/></Text>
+        <Text><Link to="/myorders"><img style={{width: "35px"}} src={receipt}/></Link></Text>
           </Wrapper>
       </>
     );

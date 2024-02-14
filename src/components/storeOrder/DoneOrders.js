@@ -32,7 +32,7 @@ const DoneOrders = ({ dones, loading }) => {
 
     return (
         <>
-        <Span>주문 완료 ({count} 개)</Span>
+        <Span>주문 완료 (<span style={{color: "red"}}>{count}</span> 개)</Span>
         <DoneOrderBlock>
         {check && 
             <div style={{fontSize: '1.5rem', fontWeight: 'bold', padding:'4% 0'}}>

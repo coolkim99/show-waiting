@@ -29,14 +29,14 @@ const ButtonWrapper = styled.div`
 `
 
 const ButtonHome = styled(Button)`
-  font-size : 1.5rem;
-  margin : 1.5rem;
+  font-size : 1.3rem;
+  margin : 1.3rem;
   display : block;
-  width : 230px;
-  height : 70px;
+  width : 200px;
+  height : 50px;
   @media (max-height : 800px) {
     width : 200px;
-    height : 60px;
+    height : 50px;
   }
 `;
 

@@ -16,7 +16,7 @@ const ItemTemplateBlock = styled.div`
 /* 흰색 박스 */
 const WhiteBox = styled(Responsive)`
   transform: translateX(30px);
-  border-bottom: 1px solid lightgray;
+  background-color: rgba(255, 157, 71, 0.2);
 
 `;
 const LinkTo = styled(Link)`

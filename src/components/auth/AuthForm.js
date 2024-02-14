@@ -9,10 +9,10 @@ import { useState } from 'react';
  */
 
 const AuthFormBlock = styled.div`
-  h3 {
+  h4 {
     margin: 0;
     color: white;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
     text-align : center;
     item-align : center;
   }
@@ -22,7 +22,7 @@ const AuthFormBlock = styled.div`
  * 스타일링된 input
  */
 const StyledInput = styled.input`
-  font-size: 1rem;
+  font-size: 0.8rem;
   border: none;
   border-radius : 5px;
   padding: 8px 8px;
@@ -41,7 +41,7 @@ export const Select = styled.select`
     margin-top: 1rem;
 	width: 107%;
 	padding: 8px 8px;
-	font-size: inherit;
+	font-size: 0.8rem;
 	line-height: inherit;
 	border: 1px solid;
 	border-radius: 5px;
@@ -60,7 +60,8 @@ const Footer = styled.div`
   text-align: right;
   a {
     color: white;
-    text-decoration: underline;
+    text-decoration: none;
+    font-size: 0.9em;
     &:hover {
       color: white;
     }
@@ -98,7 +99,7 @@ const AuthForm = ({type, form, onChange, onSubmit, error}) => {
 
   return (
     <AuthFormBlock>
-      <h3>{text}</h3>
+      <h4>{text}</h4>
       <form onSubmit={onSubmit}>
       <StyledInput
           autoComplete="email"

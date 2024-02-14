@@ -32,6 +32,15 @@ const MenuListBlock = styled(Responsive)`
   }
 `;
 
+
+const ButtonWithMarginTop = styled(Button)`
+  margin-top: 0.9rem;
+  margin-bottom: 1.2rem;
+  width : 100%;
+  background-color: rgba(235, 64, 52, 0.1);
+`;
+
+
 const MenuItem = ({ menu, selected, onClick }) => {
   const { itemId, name, price } = menu;
 
@@ -92,7 +101,7 @@ const ManageItemList = ({ menus, error, loading }) => {
           ))}
         </div>
       )}
-      <Button onClick={onDelete}>상품 삭제</Button>
+      <ButtonWithMarginTop onClick={onDelete}>상품 삭제</ButtonWithMarginTop>
     </MenuListBlock>
   );
 };

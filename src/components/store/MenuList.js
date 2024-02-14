@@ -51,6 +51,12 @@ const CountBlock = styled.div`
     padding : 2px;
   }
 `
+const ButtonWithMarginTop = styled(Button)`
+  margin-top: 0.9rem;
+  margin-bottom: 1.2rem;
+  width : 100%;
+  background-color: rgba(235, 64, 52, 0.1);
+`;
 
 const MenuItem = ({ menu, selected, onClick}) => {
   const { itemId, name, price } = menu;
@@ -145,7 +151,7 @@ const MenuList = ({ menus, error, loading, storeId}) => {
               onClick={handleClick}
             />
           ))}
-          <Button onClick={onOrder}>주문</Button>
+          <ButtonWithMarginTop onClick={onOrder}>주문</ButtonWithMarginTop>
         </div>
       )}
       

@@ -12,9 +12,11 @@ const Span = styled(Responsive)`
 
 const NewOrderBlock = styled(Responsive)`
     margin-top: 1rem;
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
     padding : 15px;
     transform: translateX(30px);
+    padding-bottom : 40px;
+    border-bottom : 1px dashed lightgray;
 `;
 
 const NewOrders = ({ orderings, loading }) => {
@@ -34,7 +36,7 @@ const NewOrders = ({ orderings, loading }) => {
 
     return (
         <>
-        <Span>들어온 주문 ({count} 개)</Span>
+        <Span>들어온 주문 (<span style={{color: "red"}}>{count}</span> 개)</Span>
         <NewOrderBlock>
             
         {check && 

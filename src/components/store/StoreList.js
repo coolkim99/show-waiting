@@ -7,21 +7,17 @@ import { Link } from 'react-router-dom';
 
 const StoreListBlock = styled(Responsive)`
   margin-top: 1rem;
+  transform: translateX(30px);
 `;
 
 const StoreItemBlock = styled.div`
-  border: 0.8px solid #d63f2b;
-  border-radius : 5px;
+padding-top: 0.1rem;
   &:hover {
     background: lightgray;
     color: white;
     text-decoration: none;
-    border: 0.8px solid white;
   }
-  & + & {
-    margin-top: 1rem;
-  }
-  transform: translateX(30px);
+  border-bottom : 1px solid #e8e8e8;
 
 `;
 
@@ -29,10 +25,7 @@ const StoreLink = styled(Link)`
   color : black;
   text-decoration : none;
   padding : 10px;
-  .orderarrow {
-    font-weight : normal;
-    color : gray;
-  }
+  font-size : 1.2rem;
 `
 
 
@@ -42,10 +35,10 @@ const StoreItem = ({ store }) => {
 
   return (
     <StoreItemBlock>
-      <h2>
+      <h3>
         <StoreLink to={`/menuList/${storeId}/${name}`}>{str}
         </StoreLink>
-      </h2>
+      </h3>
     </StoreItemBlock>
   );
 };

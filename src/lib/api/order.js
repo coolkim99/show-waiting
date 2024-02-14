@@ -28,3 +28,8 @@ export const order = ({storeId, itemId, userId, count}) => {
 export const cancle = ({ id }) => {
     return client.put(`/api/cancle`, { id });
 } 
+
+export const findOrders = ({ userId }) => {
+    console.log(userId);
+    return client.get(`/api/getOrders/${userId}`)
+}

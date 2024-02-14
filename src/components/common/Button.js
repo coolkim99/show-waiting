@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 const buttonStyle = css`
   border: none;
   border-radius: 4px;
-  font-size: 1rem;
+  font-size: 0.8rem;
   font-weight: bold;
   padding: 0.25rem 1rem;
   color: #d6685a;
@@ -23,7 +23,7 @@ const buttonStyle = css`
       padding-top: 0.75rem;
       padding-bottom: 0.75rem;
       width: 100%;
-      font-size: 1.125rem;
+      font-size: 0.8rem;
     `}
   &:disabled {
     background: gray;

@@ -10,7 +10,7 @@ const Wrapper =styled.div`
 width : 60px;
 float : left;
     min-height : 100vh;
-    // background-color: lightgray;
+    background-color: #d63f2b;
     border-right : 0.8px solid #d63f2b;
 `;
 
@@ -30,8 +30,9 @@ const Logo = styled.div`
   padding : 2px;
   border: 0.8px solid #d63f2b;
   border-radius : 25px;
-  background-color : white;
   font-size : 1.2rem;
+  color : white;
+  font-weight : bold;
 
 `;
 

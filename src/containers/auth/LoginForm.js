@@ -68,7 +68,6 @@ const LoginForm = ({ history }) => {
         try {
           if (auth) {
             if (auth.result.type === "CONSUMER") {
-              dispatch(findStores());
               history.push('/main');
             } else if (auth.result.type === "STORE") {
               await handleOrders(dispatch, auth.result.id, history);

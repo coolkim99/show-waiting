@@ -11,6 +11,7 @@ import MenuPage from "./pages/MenuPage";
 import OrderListPage from "./pages/OrderListPage";
 import ManagePage from "./pages/ManagePage";
 import ConfirmPage from "./pages/ConfirmPage";
+import MyOrdersPage from "./pages/MyOrdersPage";
 
 const Routers = () => {
     return (
@@ -23,6 +24,7 @@ const Routers = () => {
             <Route path="/orders" component={OrderListPage}/>
             <Route path="/manage/:storeId" component={ManagePage} />
             <Route path="/confirm" component={ConfirmPage}/>
+            <Route path="/myorders" component={MyOrdersPage}/>
         </BrowserRouter>
     )
 }

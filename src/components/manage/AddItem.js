@@ -12,6 +12,7 @@ import Responsive from '../common/Responsive';
 const ItemFormBlock = styled(Responsive)`
 h4{
     color: gray;
+    padding-top : 1rem;
 }
 `;
 
@@ -19,12 +20,12 @@ h4{
  * 스타일링된 input
  */
 const StyledInput = styled.input`
-  font-size:0.8rem;
-  border: 0.9px solid black;
+  font-size:0.7rem;
+  border: none;
   border-radius : 5px;
-  padding: 8px 8px;
+  padding: 7px 7px;
   outline: none;
-  width: 75%;
+  width: 78%;
   &:focus {
     color: $oc-teal-7;
     border-bottom: 1px solid black;
@@ -34,24 +35,11 @@ const StyledInput = styled.input`
   }
 `;
 
-/**
- * 폼 하단에 로그인 혹은 회원가입 링크를 보여줌
- */
-const Footer = styled.div`
-  margin-top: 2rem;
-  text-align: right;
-  a {
-    color: white;
-    text-decoration: underline;
-    &:hover {
-      color: white;
-    }
-  }
-`;
-
 const ButtonWithMarginTop = styled(Button)`
   margin-top: 0.9rem;
-  border: 0.9px solid black;
+  border: none;
+  margin-bottom: 1.2rem;
+  width : 83%;
 `;
 
 const textMap = {
@@ -97,8 +85,6 @@ const AddItem = ({type, form, onChange, onSubmit, error}) => {
             추가
         </ButtonWithMarginTop>
       </form>
-      <Footer>
-      </Footer>
     </ItemFormBlock>
   );
 };
